@@ -1,11 +1,10 @@
-    def solve():
-    # Последовательно считываем три строки, удаляя лишние пробелы по краям
-    a = input().strip()
-    b = input().strip()
-    c = input().strip()
-    
-    # Выводим их, соединяя через три дефиса
-    print(f"{a}---{b}---{c}")
+# tasks/task4.py
 
-    if __name__ == "__main__":
+    def solve():
+    # Считываем 3 строки и сразу кладем их в список
+    # Затем объединяем их через разделитель '---'
+    lines = [input() for _ in range(3)]
+    print("---".join(lines))
+
+if __name__ == "__main__":
     solve()
