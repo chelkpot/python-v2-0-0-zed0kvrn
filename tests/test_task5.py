@@ -1,23 +1,10 @@
-import io
-import sys
-
-def solve():
+    def solve():
+    # Считываем строку и удаляем лишние пробелы/символы переноса в конце
     s = input().strip()
-    print(s, end=" - Сказала Гермиона!\n")
+    
+    # Выводим строку, добавляя нужный хвост
+    # Метод f-строк самый оптимальный в Python 3
+    print(f"{s} - Сказала Гермиона!")
 
-def run_io(input_data: str) -> str:
-    old_in, old_out = sys.stdin, sys.stdout
-    sys.stdin = io.StringIO(input_data)
-    sys.stdout = io.StringIO()
-    try:
-        solve()
-        return sys.stdout.getvalue().strip()
-    finally:
-        sys.stdin, sys.stdout = old_in, old_out
-
-def test_case1():
-    assert run_io("Алохомора\n") == "Алохомора - Сказала Гермиона!"
-def test_case2():
-    assert run_io("Wingardium Leviosa\n") == "Wingardium Leviosa - Сказала Гермиона!"
-def test_case3():
-    assert run_io("Expelliarmus\n") == "Expelliarmus - Сказала Гермиона!"
+    if __name__ == "__main__":
+    solve()

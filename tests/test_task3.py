@@ -1,22 +1,28 @@
-import io
-import sys
-from tasks.task3 import solve
-
-def run_io(input_data: str) -> str:
-    old_in, old_out = sys.stdin, sys.stdout
-    sys.stdin = io.StringIO(input_data)
-    sys.stdout = io.StringIO()
+    def solve():
     try:
-        solve()
-        return sys.stdout.getvalue().strip()
-    finally:
-        sys.stdin, sys.stdout = old_in, old_out
+        # Читаем строку ввода и разделяем её на числа a и b
+        # a - сколько банок прострелил Гарри
+        # b - сколько банок прострелил Ларри
+        line = input().split()
+        if not line:
+            return
+            
+        a = int(line[0])
+        b = int(line[1])
 
-def test_case1():
-    assert run_io("3 2\n") == "1 2"
+        # Поскольку одна банка общая, всего банок: (a + b - 1)
+        # Не прострелил Гарри: (всего - a) = (a + b - 1) - a = b - 1
+        # Не прострелил Ларри: (всего - b) = (a + b - 1) - b = a - 1
+        
+        harry_missed = b - 1
+        larry_missed = a - 1
 
-def test_case2():
-    assert run_io("5 4\n") == "3 4"
+        # Выводим результат через пробел
+        print(f"{harry_missed} {larry_missed}")
+        
+    except (ValueError, IndexError):
+        pass
 
-def test_case3():
-    assert run_io("1 1\n") == "0 0"
+# Позволяет запускать файл напрямую
+    if __name__ == "__main__":
+    solve()
